@@ -50,11 +50,11 @@ export default function SheetsPage() {
                     <p className="mt-3 flex-1 text-sm leading-6 text-muted">
                       {sheet.description}
                     </p>
-                    <div className="mt-6 flex items-center justify-between border-t border-border pt-4">
+                    <div className="mt-6 flex flex-col gap-3 border-t border-border pt-4">
                       <span className="font-display text-sm text-foreground">
                         {sheet.problems.length} problems
                       </span>
-                      <span className="flex gap-2">
+                      <span className="flex flex-wrap gap-2">
                         {breakdown.map((b) => (
                           <span
                             key={b.rating}
