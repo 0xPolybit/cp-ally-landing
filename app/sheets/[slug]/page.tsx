@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { SiteHeader } from "../../_components/SiteHeader";
 import { SiteFooter } from "../../_components/SiteFooter";
-import { ProblemTable } from "../../_components/ProblemTable";
+import { HandleTracker } from "../../_components/HandleTracker";
 import { getSheet, ratingBreakdown, sheets } from "../../_data/sheets";
 
 export function generateStaticParams() {
@@ -71,7 +71,7 @@ export default async function SheetPage({
 
         <section>
           <div className="mx-auto w-full max-w-5xl px-6 py-16">
-            <ProblemTable problems={sheet.problems} />
+            <HandleTracker problems={sheet.problems} />
             <p className="mt-6 text-sm text-faint">
               &ldquo;Open in app&rdquo; uses the{" "}
               <span className="font-display">cpally://</span> protocol and opens

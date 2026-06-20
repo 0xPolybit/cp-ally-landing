@@ -1,10 +1,24 @@
 import type { Problem } from "../_data/sheets";
+import type { ProblemStatus } from "../api/cf-status/route";
 
 function codeforcesUrl(p: Problem) {
   return `https://codeforces.com/problemset/problem/${p.contestId}/${p.index}`;
 }
 
-export function ProblemTable({ problems }: { problems: Problem[] }) {
+// Tints kept below 50% opacity so the row text stays legible in both themes.
+const STATUS_ROW: Record<ProblemStatus, string> = {
+  accepted: "bg-green-500/20 hover:bg-green-500/30",
+  wrong: "bg-red-500/20 hover:bg-red-500/30",
+  error: "bg-amber-400/25 hover:bg-amber-400/35",
+};
+
+export function ProblemTable({
+  problems,
+  statusByCode,
+}: {
+  problems: Problem[];
+  statusByCode?: Record<string, ProblemStatus>;
+}) {
   return (
     <div className="overflow-x-auto border border-border">
       <table className="w-full min-w-[640px] border-collapse text-left text-sm">
@@ -25,10 +39,14 @@ export function ProblemTable({ problems }: { problems: Problem[] }) {
           </tr>
         </thead>
         <tbody>
-          {problems.map((p, i) => (
+          {problems.map((p, i) => {
+            const status = statusByCode?.[p.code];
+            return (
             <tr
               key={p.code}
-              className="border-b border-border transition-colors last:border-b-0 hover:bg-surface-muted"
+              className={`border-b border-border transition-colors last:border-b-0 ${
+                status ? STATUS_ROW[status] : "hover:bg-surface-muted"
+              }`}
             >
               <td className="px-4 py-3 align-middle font-display text-xs text-faint tabular-nums">
                 {String(i + 1).padStart(3, "0")}
@@ -63,7 +81,8 @@ export function ProblemTable({ problems }: { problems: Problem[] }) {
                 </div>
               </td>
             </tr>
-          ))}
+            );
+          })}
         </tbody>
       </table>
     </div>
