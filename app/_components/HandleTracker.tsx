@@ -1,11 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { Problem } from "../_data/sheets";
 import type { ProblemStatus } from "../api/cf-status/route";
 import { ProblemTable } from "./ProblemTable";
+import { OpenInAppModal, type AppDialogPhase } from "./OpenInAppModal";
 
 const STORAGE_KEY = "cp-ally-handle";
+const SKIP_POPUP_KEY = "cp-ally-skip-app-popup";
 
 type StatusMap = Record<string, ProblemStatus>;
 
@@ -21,6 +23,41 @@ export function HandleTracker({ problems }: { problems: Problem[] }) {
   const [trackedHandle, setTrackedHandle] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // "Open in app" deep-link popup state.
+  const [appPhase, setAppPhase] = useState<AppDialogPhase | null>(null);
+  const [neverShow, setNeverShow] = useState(false);
+  const appTimer = useRef<number | null>(null);
+
+  const openInApp = useCallback((code: string) => {
+    // Fire the deep link first — this is what actually launches the app.
+    window.location.href = `cpally://problem/${code}`;
+    if (window.localStorage.getItem(SKIP_POPUP_KEY) === "1") return;
+
+    setNeverShow(false);
+    setAppPhase("opening");
+    if (appTimer.current) window.clearTimeout(appTimer.current);
+    appTimer.current = window.setTimeout(() => setAppPhase("ready"), 5000);
+  }, []);
+
+  const closeAppDialog = useCallback(() => {
+    if (appTimer.current) window.clearTimeout(appTimer.current);
+    appTimer.current = null;
+    setAppPhase(null);
+  }, []);
+
+  const toggleNeverShow = useCallback((checked: boolean) => {
+    setNeverShow(checked);
+    if (checked) window.localStorage.setItem(SKIP_POPUP_KEY, "1");
+    else window.localStorage.removeItem(SKIP_POPUP_KEY);
+  }, []);
+
+  // Clear any pending timer on unmount.
+  useEffect(() => {
+    return () => {
+      if (appTimer.current) window.clearTimeout(appTimer.current);
+    };
+  }, []);
 
   const check = useCallback(async (raw: string) => {
     const value = raw.trim();
@@ -160,8 +197,18 @@ export function HandleTracker({ problems }: { problems: Problem[] }) {
         <ProblemTable
           problems={problems}
           statusByCode={statusByCode ?? undefined}
+          onOpenInApp={openInApp}
         />
       </div>
+
+      {appPhase && (
+        <OpenInAppModal
+          phase={appPhase}
+          onClose={closeAppDialog}
+          neverShow={neverShow}
+          onToggleNeverShow={toggleNeverShow}
+        />
+      )}
     </div>
   );
 }

@@ -15,9 +15,11 @@ const STATUS_ROW: Record<ProblemStatus, string> = {
 export function ProblemTable({
   problems,
   statusByCode,
+  onOpenInApp,
 }: {
   problems: Problem[];
   statusByCode?: Record<string, ProblemStatus>;
+  onOpenInApp?: (code: string) => void;
 }) {
   return (
     <div className="overflow-x-auto border border-border">
@@ -74,6 +76,14 @@ export function ProblemTable({
                   </a>
                   <a
                     href={`cpally://problem/${p.code}`}
+                    onClick={
+                      onOpenInApp
+                        ? (e) => {
+                            e.preventDefault();
+                            onOpenInApp(p.code);
+                          }
+                        : undefined
+                    }
                     className="border border-foreground bg-foreground px-3 py-1.5 text-xs font-medium text-background transition-colors hover:bg-transparent hover:text-foreground"
                   >
                     Open in app
