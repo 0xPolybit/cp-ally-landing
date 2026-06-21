@@ -4,6 +4,7 @@ import { basicsOfBitManipulation } from "./basics-of-bit-manipulation";
 import { basicsOfDynamicProgramming } from "./basics-of-dynamic-programming";
 import { basicsOfStrings } from "./basics-of-strings";
 import { basicsOfHashing } from "./basics-of-hashing";
+import { basicsOfSorting } from "./basics-of-sorting";
 
 export type { Problem };
 
@@ -63,6 +64,14 @@ export const sheets: Sheet[] = [
     description:
       "Get a feel for hashing techniques — 40 CodeForces problems tagged hashing, laddered from 800 up to 1700 (the range was widened since few hashing problems sit at the lowest ratings).",
     problems: basicsOfHashing,
+  },
+  {
+    slug: "basics-of-sorting",
+    title: "Basics of Sorting",
+    topic: "Sorting",
+    description:
+      "Master sorting and the ideas built on it — 100 CodeForces problems tagged sortings, laddered from 800 up to 1400 across every rating tier.",
+    problems: basicsOfSorting,
   },
 ];
 
