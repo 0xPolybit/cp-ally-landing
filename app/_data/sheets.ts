@@ -1,5 +1,6 @@
 import { introForBeginners, type Problem } from "./intro-for-beginners";
 import { basicsOfNumberTheory } from "./basics-of-number-theory";
+import { basicsOfBitManipulation } from "./basics-of-bit-manipulation";
 
 export type { Problem };
 
@@ -27,6 +28,14 @@ export const sheets: Sheet[] = [
     description:
       "Build a foundation in number theory — 100 CodeForces problems tagged number theory, laddered from 800 up to 1400 as the ideas get sharper.",
     problems: basicsOfNumberTheory,
+  },
+  {
+    slug: "basics-of-bit-manipulation",
+    title: "Basics of Bit Manipulation",
+    topic: "Bit manipulation",
+    description:
+      "Get comfortable thinking in bits — 100 CodeForces problems tagged bitmasks, laddered from 800 up to 1400 as the tricks compound.",
+    problems: basicsOfBitManipulation,
   },
 ];
 
