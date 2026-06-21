@@ -3,6 +3,7 @@ import { basicsOfNumberTheory } from "./basics-of-number-theory";
 import { basicsOfBitManipulation } from "./basics-of-bit-manipulation";
 import { basicsOfDynamicProgramming } from "./basics-of-dynamic-programming";
 import { basicsOfStrings } from "./basics-of-strings";
+import { basicsOfHashing } from "./basics-of-hashing";
 
 export type { Problem };
 
@@ -54,6 +55,14 @@ export const sheets: Sheet[] = [
     description:
       "Sharpen your string-handling instincts — 100 CodeForces problems tagged strings, laddered from 800 up to 1400 across every rating tier.",
     problems: basicsOfStrings,
+  },
+  {
+    slug: "basics-of-hashing",
+    title: "Basics of Hashing",
+    topic: "Hashing",
+    description:
+      "Get a feel for hashing techniques — 40 CodeForces problems tagged hashing, laddered from 800 up to 1700 (the range was widened since few hashing problems sit at the lowest ratings).",
+    problems: basicsOfHashing,
   },
 ];
 

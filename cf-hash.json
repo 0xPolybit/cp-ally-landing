@@ -1,0 +1,100 @@
+[
+  {
+    "code": "2148A",
+    "contestId": 2148,
+    "index": "A",
+    "name": "Sublime Sequence",
+    "rating": 800
+  },
+  {
+    "code": "525A",
+    "contestId": 525,
+    "index": "A",
+    "name": "Vitaliy and Pie",
+    "rating": 1100
+  },
+  {
+    "code": "1520D",
+    "contestId": 1520,
+    "index": "D",
+    "name": "Same Differences",
+    "rating": 1200
+  },
+  {
+    "code": "1800D",
+    "contestId": 1800,
+    "index": "D",
+    "name": "Remove Two Letters",
+    "rating": 1200
+  },
+  {
+    "code": "1650C",
+    "contestId": 1650,
+    "index": "C",
+    "name": "Weight of the System of Nested Segments",
+    "rating": 1200
+  },
+  {
+    "code": "4C",
+    "contestId": 4,
+    "index": "C",
+    "name": "Registration System",
+    "rating": 1300
+  },
+  {
+    "code": "486B",
+    "contestId": 486,
+    "index": "B",
+    "name": "OR in Matrix",
+    "rating": 1300
+  },
+  {
+    "code": "1899D",
+    "contestId": 1899,
+    "index": "D",
+    "name": "Yarik and Musical Notes",
+    "rating": 1300
+  },
+  {
+    "code": "1553B",
+    "contestId": 1553,
+    "index": "B",
+    "name": "Reverse String",
+    "rating": 1300
+  },
+  {
+    "code": "2150A",
+    "contestId": 2150,
+    "index": "A",
+    "name": "Incremental Path",
+    "rating": 1300
+  },
+  {
+    "code": "2020C",
+    "contestId": 2020,
+    "index": "C",
+    "name": "Bitwise Balancing",
+    "rating": 1400
+  },
+  {
+    "code": "1451C",
+    "contestId": 1451,
+    "index": "C",
+    "name": "String Equality",
+    "rating": 1400
+  },
+  {
+    "code": "1895C",
+    "contestId": 1895,
+    "index": "C",
+    "name": "Torn Lucky Ticket",
+    "rating": 1400
+  },
+  {
+    "code": "182D",
+    "contestId": 182,
+    "index": "D",
+    "name": "Common Divisors",
+    "rating": 1400
+  }
+]
