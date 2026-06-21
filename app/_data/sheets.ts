@@ -1,6 +1,7 @@
 import { introForBeginners, type Problem } from "./intro-for-beginners";
 import { basicsOfNumberTheory } from "./basics-of-number-theory";
 import { basicsOfBitManipulation } from "./basics-of-bit-manipulation";
+import { basicsOfDynamicProgramming } from "./basics-of-dynamic-programming";
 
 export type { Problem };
 
@@ -36,6 +37,14 @@ export const sheets: Sheet[] = [
     description:
       "Get comfortable thinking in bits — 100 CodeForces problems tagged bitmasks, laddered from 800 up to 1400 as the tricks compound.",
     problems: basicsOfBitManipulation,
+  },
+  {
+    slug: "basics-of-dynamic-programming",
+    title: "Basics of Dynamic Programming",
+    topic: "Dynamic programming",
+    description:
+      "Learn to break problems into subproblems — 100 CodeForces problems tagged dp, laddered from 800 up to 1400 as the states get richer.",
+    problems: basicsOfDynamicProgramming,
   },
 ];
 
