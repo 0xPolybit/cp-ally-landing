@@ -2,6 +2,7 @@ import { introForBeginners, type Problem } from "./intro-for-beginners";
 import { basicsOfNumberTheory } from "./basics-of-number-theory";
 import { basicsOfBitManipulation } from "./basics-of-bit-manipulation";
 import { basicsOfDynamicProgramming } from "./basics-of-dynamic-programming";
+import { basicsOfStrings } from "./basics-of-strings";
 
 export type { Problem };
 
@@ -45,6 +46,14 @@ export const sheets: Sheet[] = [
     description:
       "Learn to break problems into subproblems — 100 CodeForces problems tagged dp, laddered from 800 up to 1400 as the states get richer.",
     problems: basicsOfDynamicProgramming,
+  },
+  {
+    slug: "basics-of-strings",
+    title: "Basics of Strings",
+    topic: "Strings",
+    description:
+      "Sharpen your string-handling instincts — 100 CodeForces problems tagged strings, laddered from 800 up to 1400 across every rating tier.",
+    problems: basicsOfStrings,
   },
 ];
 
