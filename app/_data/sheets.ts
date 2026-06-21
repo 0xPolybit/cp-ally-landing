@@ -5,6 +5,7 @@ import { basicsOfDynamicProgramming } from "./basics-of-dynamic-programming";
 import { basicsOfStrings } from "./basics-of-strings";
 import { basicsOfHashing } from "./basics-of-hashing";
 import { basicsOfSorting } from "./basics-of-sorting";
+import { basicsOfMathematics } from "./basics-of-mathematics";
 
 export type { Problem };
 
@@ -72,6 +73,14 @@ export const sheets: Sheet[] = [
     description:
       "Master sorting and the ideas built on it — 100 CodeForces problems tagged sortings, laddered from 800 up to 1400 across every rating tier.",
     problems: basicsOfSorting,
+  },
+  {
+    slug: "basics-of-mathematics",
+    title: "Basics of Mathematics",
+    topic: "Mathematics",
+    description:
+      "Strengthen the math instincts behind problem-solving — 100 CodeForces problems tagged math, laddered from 800 up to 1400 across every rating tier.",
+    problems: basicsOfMathematics,
   },
 ];
 
