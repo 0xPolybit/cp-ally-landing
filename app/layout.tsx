@@ -23,6 +23,10 @@ export const metadata: Metadata = {
       "Unofficial partner code editor for competitive programming, in CodeForces.",
     type: "website",
   },
+  icons: {
+    icon: "/logo.png",
+    apple: "/logo.png",
+  },
 };
 
 export default function RootLayout({
