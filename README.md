@@ -1,36 +1,142 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CP Ally IDE — Web Companion
 
-## Getting Started
+> Landing page and curated problem sheets for **CP Ally IDE**, the unofficial partner code editor for competitive programming on CodeForces.
 
-First, run the development server:
+<p>
+  <a href="https://github.com/0xPolybit/cp-ally-ide/releases"><img alt="Latest release" src="https://img.shields.io/github/v/release/0xPolybit/cp-ally-ide?label=CP%20Ally%20IDE&color=4d7c5a"></a>
+  <img alt="Status" src="https://img.shields.io/badge/status-beta-amber">
+  <a href="https://github.com/0xPolybit/cp-ally-ide/blob/main/LICENSE"><img alt="License" src="https://img.shields.io/github/license/0xPolybit/cp-ally-ide"></a>
+  <a href="https://github.com/0xPolybit/cp-ally-ide/stargazers"><img alt="Stars" src="https://img.shields.io/github/stars/0xPolybit/cp-ally-ide?style=flat"></a>
+</p>
+
+<p>
+  <img alt="Next.js" src="https://img.shields.io/badge/Next.js-16-000000?logo=nextdotjs&logoColor=white">
+  <img alt="React" src="https://img.shields.io/badge/React-19-149ECA?logo=react&logoColor=white">
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white">
+  <img alt="Tailwind CSS" src="https://img.shields.io/badge/Tailwind_CSS-4-38BDF8?logo=tailwindcss&logoColor=white">
+</p>
+
+---
+
+## What is CP Ally IDE?
+
+**CP Ally IDE** is an unofficial desktop code editor purpose-built for competitive programming on
+CodeForces. Instead of a general-purpose IDE, it bundles exactly the contest loop into one window —
+because mid-contest, _speed matters more than general-purpose IDE features_.
+
+- 🔎 **Fetch by problem code** — type a contest code like `2208A` and pull the problem from CodeForces.
+- 📄 **Faithful rendering** — statements render with HTML, icons, and LaTeX.
+- ⌨️ **Syntax-highlighted editor** — a compact split layout: statement on the left, code on the right.
+- ▶️ **Run locally** — execute against the extracted sample tests or your own custom cases, with
+  case-insensitive `YES`/`NO` judging.
+- 💾 **Caching that remembers** — statements cache for fast reloads; your code is preserved per
+  problem and per language.
+- 🪟 **Persistent workspace** — window state, divider positions, and the last language are restored.
+
+The desktop app is a Java / Swing application built with Maven, and lives in its own repository:
+👉 **[github.com/0xPolybit/cp-ally-ide](https://github.com/0xPolybit/cp-ally-ide)**
+
+> **Beta:** the app is under active development and may be prone to bugs and crashes.
+
+---
+
+## Install & use the desktop app
+
+The app is distributed from the main repository's **[Releases](https://github.com/0xPolybit/cp-ally-ide/releases)** page.
+
+### Option A — Download a release
+
+1. Make sure you have a recent **Java Runtime (JRE 17+)** installed.
+2. Download the latest build from the
+   [Releases](https://github.com/0xPolybit/cp-ally-ide/releases) page.
+3. Launch it (double-click the packaged app, or run the jar):
+   ```bash
+   java -jar cp-ally-ide.jar
+   ```
+
+### Option B — Build from source
+
+Requires **JDK 17+** and **Maven**.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/0xPolybit/cp-ally-ide.git
+cd cp-ally-ide
+mvn clean package
+java -jar target/*.jar
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### The five-step workflow
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Enter the code** — a contest code and index, e.g. `2208A`.
+2. **Fetch** — pull the statement and sample tests from CodeForces.
+3. **Read** — study the rendered problem in the left panel.
+4. **Write** — code your solution in the editor on the right.
+5. **Run** — judge it locally against the samples.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## This repository — the web companion
 
-To learn more about Next.js, take a look at the following resources:
+This repo (`cp-ally-landing`) is the **marketing site + problem sheets** for CP Ally IDE. It is a
+[Next.js](https://nextjs.org) app (App Router, Tailwind CSS v4, TypeScript) and includes:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Landing page** — what CP Ally IDE is, its features, and the workflow.
+- **Problem sheets** (`/sheets`) — curated, rating-laddered CodeForces problem sets by topic
+  (Beginners, Number Theory, Bit Manipulation, Dynamic Programming, Strings, Hashing, Sorting,
+  Mathematics).
+- **Progress tracking** — enter your CodeForces handle and each problem row is tinted by verdict
+  (solved / wrong / attempted), with a "show only unsolved" filter.
+- **Open in app** — every problem has an `cpally://problem/<code>` deep link that opens it directly
+  in the desktop app.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Run it locally
 
-## Deploy on Vercel
+```bash
+git clone https://github.com/0xPolybit/cp-ally-landing.git
+cd cp-ally-landing
+npm install
+npm run dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Open [http://localhost:3000](http://localhost:3000).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Scripts
+
+| Script          | Description                          |
+| --------------- | ------------------------------------ |
+| `npm run dev`   | Start the dev server (Turbopack)     |
+| `npm run build` | Production build                     |
+| `npm run start` | Serve the production build           |
+| `npm run lint`  | Lint with ESLint                     |
+
+### Configuration
+
+Set your production origin so `sitemap.xml`, `robots.txt`, and Open Graph URLs resolve correctly:
+
+```bash
+# .env
+NEXT_PUBLIC_SITE_URL=https://your-domain.example
+```
+
+### Project structure
+
+```
+app/
+├─ _components/        UI components (header, hero, tracker, modal, table…)
+├─ _data/              Sheet registry + per-topic problem lists
+├─ api/cf-status/      CodeForces verdict proxy (handle → per-problem status)
+├─ sheets/             Sheets directory + dynamic /sheets/[slug] pages
+├─ layout.tsx          Root layout, fonts, metadata
+└─ page.tsx            Landing page
+```
+
+---
+
+## Credits
+
+Built by **Swastik Biswas**, with contributions from **Himanshi Saxena**.
+
+Licensed under the **Apache License 2.0** — see the
+[main repository](https://github.com/0xPolybit/cp-ally-ide) for details.
+
+> CP Ally IDE is an **unofficial** tool and is not affiliated with or endorsed by CodeForces.
