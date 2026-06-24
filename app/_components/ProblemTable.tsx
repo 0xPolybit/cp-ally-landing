@@ -12,6 +12,13 @@ const STATUS_ROW: Record<ProblemStatus, string> = {
   error: "bg-amber-400/25 hover:bg-amber-400/35",
 };
 
+// Non-color cue (glyph + label) so status isn't conveyed by tint alone (WCAG 1.4.1).
+const STATUS_META: Record<ProblemStatus, { glyph: string; label: string; className: string }> = {
+  accepted: { glyph: "✓", label: "Solved", className: "text-accent" },
+  wrong: { glyph: "✗", label: "Wrong", className: "text-muted" },
+  error: { glyph: "!", label: "Attempted", className: "text-muted" },
+};
+
 export function ProblemTable({
   problems,
   statusByCode,
@@ -23,7 +30,7 @@ export function ProblemTable({
 }) {
   return (
     <div className="overflow-x-auto border border-border">
-      <table className="w-full min-w-[640px] border-collapse text-left text-sm">
+      <table className="w-full min-w-[720px] border-collapse text-left text-sm">
         <thead>
           <tr className="border-b border-border bg-surface-muted">
             <th className="w-12 px-4 py-3 font-display text-xs font-semibold uppercase tracking-wider text-muted">
@@ -34,6 +41,9 @@ export function ProblemTable({
             </th>
             <th className="w-24 px-4 py-3 font-display text-xs font-semibold uppercase tracking-wider text-muted">
               Rating
+            </th>
+            <th className="w-28 px-4 py-3 font-display text-xs font-semibold uppercase tracking-wider text-muted">
+              Status
             </th>
             <th className="px-4 py-3 text-right font-display text-xs font-semibold uppercase tracking-wider text-muted">
               Links
@@ -63,6 +73,16 @@ export function ProblemTable({
                 <span className="inline-block border border-border-strong px-2 py-0.5 font-display text-xs text-muted tabular-nums">
                   {p.rating}
                 </span>
+              </td>
+              <td className="px-4 py-3 align-middle">
+                {status && (
+                  <span
+                    className={`inline-flex items-center gap-1.5 font-display text-xs ${STATUS_META[status].className}`}
+                  >
+                    <span aria-hidden="true">{STATUS_META[status].glyph}</span>
+                    {STATUS_META[status].label}
+                  </span>
+                )}
               </td>
               <td className="px-4 py-3 align-middle">
                 <div className="flex justify-end gap-2">

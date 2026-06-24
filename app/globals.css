@@ -95,6 +95,11 @@ body {
   opacity: 0;
 }
 
+/* Modal loading bar: 40% segment that slides under motion-safe, full static bar otherwise. */
+.loading-bar {
+  width: 40%;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .animate-fade-up {
     animation: fade-up 0.5s ease-out forwards;
@@ -102,7 +107,7 @@ body {
   .animate-blink {
     animation: blink 1.1s step-end infinite;
   }
-  .animate-indeterminate {
+  .loading-bar {
     animation: indeterminate 1.1s ease-in-out infinite;
   }
 }
@@ -110,5 +115,13 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .animate-fade-up {
     opacity: 1;
+  }
+  /* A blinking caret that can't blink just looks like a stray block — hide it. */
+  .animate-blink {
+    display: none;
+  }
+  /* A frozen 40% segment looks stuck — show a complete static bar instead. */
+  .loading-bar {
+    width: 100%;
   }
 }

@@ -33,7 +33,9 @@ export async function GET(request: Request) {
   try {
     const res = await fetch(
       `https://codeforces.com/api/user.status?handle=${encodeURIComponent(handle)}`,
-      { headers: { "User-Agent": "cp-ally-landing" }, cache: "no-store" },
+      // Cache briefly per-handle to soften CodeForces' ~1-request/2s rate limit
+      // when the user navigates between sheets.
+      { headers: { "User-Agent": "cp-ally-landing" }, next: { revalidate: 30 } },
     );
     cf = await res.json();
   } catch {
@@ -51,6 +53,12 @@ export async function GET(request: Request) {
       return NextResponse.json(
         { error: `Handle "${handle}" was not found.` },
         { status: 404 },
+      );
+    }
+    if (/call limit exceeded/i.test(comment)) {
+      return NextResponse.json(
+        { error: "CodeForces is rate-limiting requests — try again in a few seconds." },
+        { status: 429 },
       );
     }
     if (comment) {

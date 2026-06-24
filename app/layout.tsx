@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Pixelify_Sans } from "next/font/google";
+import { SITE_URL } from "./_components/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -14,6 +15,7 @@ const pixelifySans = Pixelify_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "CP Ally IDE — partner editor for competitive programming",
   description:
     "Unofficial partner code editor for competitive programming, in CodeForces. Fetch problems, write, and run locally — built for the contest clock.",
@@ -22,11 +24,28 @@ export const metadata: Metadata = {
     description:
       "Unofficial partner code editor for competitive programming, in CodeForces.",
     type: "website",
+    url: SITE_URL,
+    siteName: "CP Ally IDE",
+    images: ["/logo.png"],
+  },
+  twitter: {
+    card: "summary",
+    title: "CP Ally IDE",
+    description:
+      "Unofficial partner code editor for competitive programming, in CodeForces.",
+    images: ["/logo.png"],
   },
   icons: {
     icon: "/logo.png",
     apple: "/logo.png",
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#fafafa" },
+    { media: "(prefers-color-scheme: dark)", color: "#09090b" },
+  ],
 };
 
 export default function RootLayout({
