@@ -88,6 +88,13 @@ export function getSheet(slug: string): Sheet | undefined {
   return sheets.find((s) => s.slug === slug);
 }
 
+// Sheets that contain a given problem code (case-insensitive, e.g. "4A" / "4a").
+export function sheetsForProblemCode(code: string): Sheet[] {
+  const needle = code.trim().toLowerCase();
+  if (!needle) return [];
+  return sheets.filter((s) => s.problems.some((p) => p.code.toLowerCase() === needle));
+}
+
 export function ratingBreakdown(problems: Problem[]): { rating: number; count: number }[] {
   const map = new Map<number, number>();
   for (const p of problems) map.set(p.rating, (map.get(p.rating) ?? 0) + 1);
