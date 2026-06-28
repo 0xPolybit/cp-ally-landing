@@ -1,5 +1,6 @@
 import { SiteHeader } from "./_components/SiteHeader";
 import { Hero } from "./_components/Hero";
+import { Showcase } from "./_components/Showcase";
 import { Features } from "./_components/Features";
 import { Workflow } from "./_components/Workflow";
 import { Philosophy } from "./_components/Philosophy";
@@ -11,6 +12,7 @@ export default function Home() {
       <SiteHeader />
       <main className="flex-1">
         <Hero />
+        <Showcase />
         <Features />
         <Workflow />
         <Philosophy />
